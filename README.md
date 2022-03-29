@@ -1,4 +1,4 @@
-# Chrome拡張機能: teratailUserBlock 
+# Chrome拡張機能: teratailユーザブロック
 ## 概要
 このChrome拡張機能はteratailで特定のユーザの質問を非表示にする事が出来ます。
 ## 機能
