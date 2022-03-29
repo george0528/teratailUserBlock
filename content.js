@@ -1,18 +1,22 @@
 
 
-window.addEventListener('load', () => {  
+window.addEventListener('load', () => {
+  chrome.storage.local.clear();
+
+  
   // オブザーバーの作成
   const observer = new MutationObserver(records => {
     // 変化が発生したときの処理を記述
     chrome.storage.local.get('users', (data) => {
+      users = data.users;
+      
+      // 空なら
+      if(users == null) return;
 
-    users = data.users;
-    
-    // 空なら
-    if(users.length == 0) return;
+      // ユーザの質問を非表示にする
       users.forEach(user => {
         hideBlockUserArticles(user);
-      })
+      });
     });
 
   });

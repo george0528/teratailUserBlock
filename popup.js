@@ -24,7 +24,7 @@ $btn.addEventListener('click', () => {
     usersData = users;
     
     // 空なら
-    if(users.length == 0) {
+    if(users == null) {
       usersData = [];
     }
 
@@ -51,8 +51,8 @@ const showUser = () => {
     let usersData;
     users = data.users;
     usersData = users;
-    // 空なら
-    if(users.length == 0) {
+
+    if(users == null) {
       usersData = [];
     }
 
