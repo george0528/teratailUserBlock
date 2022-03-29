@@ -1,9 +1,6 @@
 
 
 window.addEventListener('load', () => {
-  chrome.storage.local.clear();
-
-  
   // オブザーバーの作成
   const observer = new MutationObserver(records => {
     // 変化が発生したときの処理を記述
