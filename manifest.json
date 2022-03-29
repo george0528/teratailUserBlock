@@ -1,5 +1,5 @@
 {
-  "manifest_version": 2,
+  "manifest_version": 3,
   "name": "teratailユーザブロック",
   "description": "teratailのuserブロック機能、ブロックしたユーザの記事が新着などに出なくなる",
   "version": "1.0",
@@ -15,12 +15,12 @@
       "js": ["content.js"]
     }
   ],
-  "browser_action": {
+  "action": {
     "default_icon": "32.png",
     "default_popup": "popup.html"
   },
-  "permissions": [
-    "storage",
-    "https://*/*"
+  "permissions": ["storage"],
+  "host_permissions": [
+    "https://teratail.com/*"
   ]
 }
