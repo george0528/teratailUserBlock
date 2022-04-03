@@ -1,6 +1,5 @@
 // 拡張機能ポップアップの要素
 const $btn = document.querySelector('#btn');
-const $allDelete = document.querySelector('#allDelete');
 const $list = document.querySelector('#list');
 
 window.addEventListener('load', () => {
@@ -60,12 +59,6 @@ $btn.addEventListener('click', () => {
     chrome.storage.local.set({'users': usersData}, () => {
       console.log('set');
     });
-  });
-});
-
-$allDelete.addEventListener('click', () => {
-  chrome.storage.local.set({'users': []}, () => {
-    $list.innerHTML = '';
   });
 });
 
