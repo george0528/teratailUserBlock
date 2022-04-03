@@ -1,0 +1,35 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 300px;
+  text-align: center;
+}
+
+button {
+  cursor: pointer;
+}
+
+li {
+  margin: 10px 0;
+}
+
+li button {
+  display: inline-block;
+  margin-left: 10px;
+}
+
+.primary {
+  color: #fff;
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.danger {
+  color: #fff;
+  background-color: #dc3545;
+  border-color: #dc3545;
+}

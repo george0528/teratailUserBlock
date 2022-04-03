@@ -99,6 +99,7 @@ const createDeleteBtn = (name) => {
   let $btn = document.createElement('button');
   $btn.textContent = '削除';
   $btn.dataset.name = name;
+  $btn.classList.add('danger');
   $btn.classList.add('delete_btn');
   return $btn;
 }
