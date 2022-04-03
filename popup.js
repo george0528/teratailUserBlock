@@ -5,6 +5,30 @@ const $list = document.querySelector('#list');
 
 window.addEventListener('load', () => {
   showUser();
+  // deleteボタンのclickイベント
+  $list.addEventListener('click', (e) => {
+    let target = e.target;
+    if(target.classList.contains('delete_btn')) {
+      let name = target.dataset.name;
+      // 削除処理
+      chrome.storage.local.get('users', (data) => {
+        let usersData;
+        let users = data.users;
+        usersData = users;
+        
+        // 除外
+        let excludedUserData = usersData.filter(userName => userName != name);
+        // 保存
+        chrome.storage.local.set({'users': excludedUserData}, () => {
+          // すべて削除
+          $list.innerHTML = '';
+  
+          // 再レンダリング
+          showUser();
+        });
+      });
+    }
+  });
 });
 
 // clickイベント
@@ -49,7 +73,7 @@ $allDelete.addEventListener('click', () => {
 const showUser = () => {
   chrome.storage.local.get('users', (data) => {
     let usersData;
-    users = data.users;
+    let users = data.users;
     usersData = users;
 
     if(users == null) {
@@ -58,8 +82,7 @@ const showUser = () => {
 
     if(usersData) {
       usersData.forEach(user => {
-        let li = createUserLiElement(user);
-        $list.append(li);
+        addUserListElement(user);
       });
     }
   });
@@ -67,7 +90,17 @@ const showUser = () => {
 
 const addUserListElement = (name) => {
   let $li = createUserLiElement(name);
+  let $deleteBtn = createDeleteBtn(name);
+  $li.appendChild($deleteBtn);
   $list.append($li);
+}
+
+const createDeleteBtn = (name) => {
+  let $btn = document.createElement('button');
+  $btn.textContent = '削除';
+  $btn.dataset.name = name;
+  $btn.classList.add('delete_btn');
+  return $btn;
 }
 
 // liタグのElemntを作成
