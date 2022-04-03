@@ -13,8 +13,15 @@ button {
   cursor: pointer;
 }
 
+ul {
+  width: 50%;
+  margin: 0 auto;
+  list-style-position: inside;
+}
+
 li {
   margin: 10px 0;
+  text-align: left;
 }
 
 li button {
