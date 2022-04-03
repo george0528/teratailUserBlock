@@ -30,14 +30,28 @@ const hideBlockUserArticles = (userName) => {
   let userLinks = document.querySelectorAll(`a[href="/users/${userName}"]`);
   if(userLinks == undefined) return;
 
+  // 普通の削除処理
   userLinks.forEach(userLink => {
     if(userLink.textContent != userName) return;
-
-    let article = userLink.closest("article");
-    if(article == undefined) return;
-    if(article.style.display == 'none') return;
-
-    article.style.display = 'none';
-    console.log(`${userName}の質問を非表示にしました`);
+    // 非表示
+    artcleDisplayNoneByName(userName, userLink);
   });
+
+  let imgs = document.querySelectorAll('img');
+  // 表示名を変更したユーザの質問の削除処理
+  imgs.forEach(img => {
+    let alt = img.getAttribute('alt');
+
+    if(alt != userName) return;
+    artcleDisplayNoneByName(userName, img);
+  });
+}
+
+const artcleDisplayNoneByName = (name, targetElement) => {
+  let article = targetElement.closest("article");
+  if(article == undefined) return;
+  if(article.style.display == 'none') return;
+
+  article.style.display = 'none';
+  console.log(`${name}の質問を非表示にしました`);
 }
