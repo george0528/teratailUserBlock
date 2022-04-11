@@ -7,14 +7,30 @@
 body {
   width: 300px;
   text-align: center;
+  padding-bottom: 30px;
+}
+
+table {
+  border-collapse: collapse;
+  margin: 0 auto;
+}
+
+tr {
+  padding-top: 3px;
+}
+
+td {
+  border-bottom: 1px solid black;
 }
 
 button {
   cursor: pointer;
+  padding: 1px;
+  border-radius: 3px;
 }
 
 ul {
-  width: 50%;
+  width: 80%;
   margin: 0 auto;
   list-style-position: inside;
 }

@@ -1,11 +1,11 @@
 // 拡張機能ポップアップの要素
 const $btn = document.querySelector('#btn');
-const $list = document.querySelector('#list');
+const $tbody = document.querySelector('tbody');
 
 window.addEventListener('load', () => {
   showUser();
   // deleteボタンのclickイベント
-  $list.addEventListener('click', (e) => {
+  $tbody.addEventListener('click', (e) => {
     let target = e.target;
     if(target.classList.contains('delete_btn')) {
       let name = target.dataset.name;
@@ -20,7 +20,7 @@ window.addEventListener('load', () => {
         // 保存
         chrome.storage.local.set({'users': excludedUserData}, () => {
           // すべて削除
-          $list.innerHTML = '';
+          $tbody.innerHTML = '';
   
           // 再レンダリング
           showUser();
@@ -81,13 +81,20 @@ const showUser = () => {
   });
 }
 
+// ユーザの追加
 const addUserListElement = (name) => {
-  let $li = createUserLiElement(name);
-  let $deleteBtn = createDeleteBtn(name);
-  $li.appendChild($deleteBtn);
-  $list.append($li);
+  const $tr = document.createElement('tr');
+
+  const $deleteBtnTd = document.createElement('td');
+  const $deleteBtn = createDeleteBtn(name);
+  $deleteBtnTd.appendChild($deleteBtn);
+
+  $tr.appendChild(createTdElement(name));
+  $tr.appendChild($deleteBtnTd);
+  $tbody.appendChild($tr);
 }
 
+// deleteBtn作成
 const createDeleteBtn = (name) => {
   let $btn = document.createElement('button');
   $btn.textContent = '削除';
@@ -97,9 +104,9 @@ const createDeleteBtn = (name) => {
   return $btn;
 }
 
-// liタグのElemntを作成
-const createUserLiElement = (name) => {
-  let $li = document.createElement('li');
-  $li.textContent = name;
-  return $li;
+// td作成
+const createTdElement = (text) => {
+  const $td = document.createElement('td');
+  $td.textContent = text;
+  return $td;
 }
