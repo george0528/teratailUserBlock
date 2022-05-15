@@ -5,6 +5,9 @@
 - teratailのユーザをブロック(ミュート)出来る
 - ブロック(ミュート)したユーザの質問は質問リストから非表示にされる
 
+## Chromeストア
+[Chromeストア](https://chrome.google.com/webstore/detail/teratail%E3%83%A6%E3%83%BC%E3%82%B6%E3%83%96%E3%83%AD%E3%83%83%E3%82%AF/aalicgledpofcbebhlfcakknpgmhhaen?hl=ja)
+
 ## 使い方
 [Qiita](https://qiita.com/mineralwater/items/5a6e016633bf00e4ea24)に使用方法等が載っています。
 
